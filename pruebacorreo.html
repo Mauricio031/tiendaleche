@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <title>Formulario de contacto</title>
+</head>
+<body>
+ <form action="enviar.php" method="post">
+  <h2>CONTACTO</h2>
+  <input type="text" name="nombre" placeholder="Nombre" required>
+  <input type="text" name="correo" placeholder="Correo" required>
+  <textarea name="mensaje" placeholder="Escribe aquí: " required></textarea>
+  <input type="submit" value="Enviar" id="boton">
+ </form>
+
+</body>
+</html>
+
+
+
+<?php
+ $destino="tucorreo@correo.com";
+ $nombre=$_POST["name"];
+ $correo=$_POST["email"];;
+ $mensaje=$_POST["message"];
+ $contenido="Nombre: ".$nombre."\nCorreo: ".$correo."\nMensaje: ".$mensaje;
+ mail($destino,"Contacto", $contenido);
+ header("Location: index.html");
+
+?>
