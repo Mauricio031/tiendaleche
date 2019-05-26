@@ -20,7 +20,7 @@ if(isset($enviar)){
     <label class="control-label col-sm-2" for="username">Usuario:</label>
     <div class="col-sm-6">
       <input required type="text" name="username" class="form-control" id="username" placeholder="Enter username">
-    </div>
+    </div>  
   </div>
 	<div class="form-group">
     <label class="control-label col-sm-2" for="name">First Name:</label>
@@ -48,7 +48,6 @@ if(isset($enviar)){
       <option value="Credito">Credito</option>
       <option value="Paypal">Paypal</option>
     </select>
-    
   </div>
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">

@@ -5,7 +5,7 @@ if(isset($enviar)){
 	$name = clear($name);
 	$price = clear($price);
 	$oferta = clear($oferta);
-
+	$categoria = clear($categoria);
 	$imagen = "";
 
 	if(is_uploaded_file($_FILES['imagen']['tmp_name'])){
@@ -13,7 +13,7 @@ if(isset($enviar)){
 		move_uploaded_file($_FILES['imagen']['tmp_name'], "productos/".$imagen);
 	}
 
-	$mysqli->query("INSERT INTO productos (name,price,imagen,oferta) VALUES ('$name','$price','$imagen','ferta')");
+	$result=$mysqli->query("INSERT INTO productos (name,price,imagen,oferta,id_categoria) VALUES ('$name','$price','$imagen','$oferta','$categoria')");
 	alert("Producto agregado");
 	redir("?p=agregar_producto");
 }
@@ -27,19 +27,19 @@ if(isset($eliminar)){
 ?>
 <form method="post" action="" enctype="multipart/form-data">
 	<div class="form-group">
-		<input type="text" class="form-control" name="name" placeholder="Nombre del producto"/>
+		<input required type="text" class="form-control" name="name" placeholder="Nombre del producto"/>
 	</div>
 
 
 	<div class="form-group">
-		<input type="text" class="form-control" name="price" placeholder="Precio del producto"/>
+		<input required type="text" class="form-control" name="price" placeholder="Precio del producto"/>
 	</div>
 
 
 	<label>Imagen del producto</label>
 
 	<div class="form-group">
-		<input type="file" class="form-control" name="imagen" title="Imagen del producto" placeholder="Imagen del producto"/>
+		<input required type="file" class="form-control" name="imagen" title="Imagen del producto" placeholder="Imagen del producto"/>
 	</div>
 
 	<div class="form-group">

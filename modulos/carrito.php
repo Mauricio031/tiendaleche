@@ -21,7 +21,7 @@ if(isset($id) && isset($modificar)){
 }
 
 if(isset($finalizar)){
-
+	include "correo.php";
 	$monto = clear($monto_total);
 
 	$id_cliente = clear($_SESSION['id_cliente']);
@@ -128,11 +128,21 @@ while($r = mysqli_fetch_array($q)){
 <br>
 <h2>Monto Total: <b class="text-green"><?=$monto_total?> <?=$divisa?></b></h2>
 
+<?php
+
+if ($monto_total > 0) {
+	?>
 <br><br>
 <form method="post" action="">
 	<input type="hidden" name="monto_total" value="<?=$monto_total?>"/>
 	<button class="btn btn-primary" type="submit" name="finalizar"><i class="fa fa-check"></i> Finalizar Compra</button>
 </form>
+
+	<?php
+}
+
+?>
+
 
 <script type="text/javascript">
 		

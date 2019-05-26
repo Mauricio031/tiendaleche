@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2019 a las 03:22:09
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.0
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 26-05-2019 a las 06:37:53
+-- Versión del servidor: 5.7.23
+-- Versión de PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,12 +28,14 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `admins`
 --
 
-CREATE TABLE `admins` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admins`;
+CREATE TABLE IF NOT EXISTS `admins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `admins`
@@ -42,19 +44,20 @@ CREATE TABLE `admins` (
 INSERT INTO `admins` (`id`, `username`, `password`, `name`) VALUES
 (1, 'boscan', '123456', 'Anyelber');
 
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `carro`
 --
 
-CREATE TABLE `carro` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `carro`;
+CREATE TABLE IF NOT EXISTS `carro` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cliente` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `cant` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cant` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -62,10 +65,12 @@ CREATE TABLE `carro` (
 -- Estructura de tabla para la tabla `categorias`
 --
 
-CREATE TABLE `categorias` (
-  `id` int(11) NOT NULL,
-  `categoria` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `categorias`;
+CREATE TABLE IF NOT EXISTS `categorias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -82,19 +87,23 @@ INSERT INTO `categorias` (`id`, `categoria`) VALUES
 -- Estructura de tabla para la tabla `clientes`
 --
 
-CREATE TABLE `clientes` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `clientes`;
+CREATE TABLE IF NOT EXISTS `clientes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `name` varchar(255) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `pago` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `username`, `password`, `name`) VALUES
-(1, 'boscan', '123456', 'Anyelber');
+INSERT INTO `clientes` (`id`, `username`, `password`, `name`, `correo`, `pago`) VALUES
+(2, 'Mauricio', 'Tecate03', 'Axel', 'mauricioaxelra@gmail.com', 'Credito');
 
 -- --------------------------------------------------------
 
@@ -102,13 +111,15 @@ INSERT INTO `clientes` (`id`, `username`, `password`, `name`) VALUES
 -- Estructura de tabla para la tabla `compra`
 --
 
-CREATE TABLE `compra` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `compra`;
+CREATE TABLE IF NOT EXISTS `compra` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cliente` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
   `monto` float NOT NULL,
-  `estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `estado` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `compra`
@@ -116,7 +127,16 @@ CREATE TABLE `compra` (
 
 INSERT INTO `compra` (`id`, `id_cliente`, `fecha`, `monto`, `estado`) VALUES
 (3, 1, '2019-02-24 12:39:04', 16400, 1),
-(4, 1, '2019-04-12 20:03:40', 1360, 0);
+(4, 1, '2019-04-12 20:03:40', 1360, 0),
+(5, 2, '2019-05-25 22:37:10', 8.25, 0),
+(6, 2, '2019-05-26 01:11:56', 30, 0),
+(7, 2, '2019-05-26 01:13:02', 0, 0),
+(8, 2, '2019-05-26 01:13:45', 8.25, 0),
+(9, 2, '2019-05-26 01:15:45', 8.25, 0),
+(10, 2, '2019-05-26 01:15:46', 8.25, 0),
+(11, 2, '2019-05-26 01:16:09', 14, 0),
+(12, 2, '2019-05-26 01:18:20', 0, 0),
+(13, 2, '2019-05-26 01:23:35', 8.25, 0);
 
 -- --------------------------------------------------------
 
@@ -124,26 +144,35 @@ INSERT INTO `compra` (`id`, `id_cliente`, `fecha`, `monto`, `estado`) VALUES
 -- Estructura de tabla para la tabla `productos`
 --
 
-CREATE TABLE `productos` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `productos`;
+CREATE TABLE IF NOT EXISTS `productos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `price` float NOT NULL,
-  `imagen` varchar(255) NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `id_categoria` int(11) NOT NULL,
-  `oferta` int(11) NOT NULL,
-  `descargable` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_categoria` int(11) DEFAULT NULL,
+  `oferta` int(11) DEFAULT NULL,
+  `descargable` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`id`, `price`, `imagen`, `name`, `id_categoria`, `oferta`, `descargable`) VALUES
-(1, 1000, 'Aceite776.png', 'Aceite', 3, 0, ''),
-(2, 200, 'Cebolla493.png', 'Cebolla', 3, 0, ''),
-(4, 1000, 'Leche581.png', 'Leche', 3, 50, ''),
-(5, 400, 'Zanahoria838.png', 'Zanahoria', 3, 10, ''),
-(7, 1000, 'Secreto218.png', 'Secreto', 0, 0, '215secreto del mundo.txt');
+(12, 30, 'lechiiiiLight_2L81.png', 'lechiiiiLight_2L', 3, 0, NULL),
+(13, 25, 'lechiiiiLight_1L272.png', 'lechiiiiLight_1L', 3, 30, NULL),
+(14, 12, 'lechiiiiLight_500ml239.png', 'lechiiiiLight_500ml', 3, 40, NULL),
+(15, 7, 'lechiiiiLight_250ml377.png', 'lechiiiiLight_250ml', 3, 50, NULL),
+(16, 35, 'lechiiiiEntera_2L509.png', 'lechiiiiEntera_2L', 3, 0, NULL),
+(17, 28, 'lechiiiiEntera_1L760.png', 'lechiiiiEntera_1L', 3, 0, NULL),
+(18, 20, 'lechiiiiEntera_500ml341.png', 'lechiiiiEntera_500ml', 3, 20, NULL),
+(19, 10, 'lechiiiiEntera_250ml793.png', 'lechiiiiEntera_250ml', 3, 50, NULL),
+(20, 40, 'lechiiiiDeslactosada_2L895.png', 'lechiiiiDeslactosada_2L', 3, 0, NULL),
+(21, 30, 'lechiiiiDeslactosada_1L329.png', 'lechiiiiDeslactosada_1L', 3, 0, NULL),
+(22, 20, 'lechiiiiDeslactosada_500ml416.png', 'lechiiiiDeslactosada_500ml', 3, 30, NULL),
+(23, 15, 'lechiiiiDeslactosada_250ml84.png', 'lechiiiiDeslactosada_250ml', 3, 45, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,13 +180,15 @@ INSERT INTO `productos` (`id`, `price`, `imagen`, `name`, `id_categoria`, `ofert
 -- Estructura de tabla para la tabla `productos_compra`
 --
 
-CREATE TABLE `productos_compra` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `productos_compra`;
+CREATE TABLE IF NOT EXISTS `productos_compra` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_compra` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `monto` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `monto` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `productos_compra`
@@ -170,99 +201,12 @@ INSERT INTO `productos_compra` (`id`, `id_compra`, `id_producto`, `cantidad`, `m
 (4, 3, 2, 4, 200),
 (5, 3, 1, 4, 1000),
 (6, 4, 5, 1, 400),
-(7, 4, 7, 1, 1000);
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `carro`
---
-ALTER TABLE `carro`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `compra`
---
-ALTER TABLE `compra`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `productos_compra`
---
-ALTER TABLE `productos_compra`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `admins`
---
-ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `carro`
---
-ALTER TABLE `carro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `compra`
---
-ALTER TABLE `compra`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `productos`
---
-ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `productos_compra`
---
-ALTER TABLE `productos_compra`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+(7, 4, 7, 1, 1000),
+(8, 5, 23, 1, 15),
+(9, 6, 21, 1, 30),
+(10, 8, 23, 1, 15),
+(11, 11, 22, 1, 20),
+(12, 13, 23, 1, 15);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

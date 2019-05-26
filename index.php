@@ -63,35 +63,18 @@ if(!isset($p)){
 		?>
 	</div>
 
-	<div class="footer">
+	<div class="footer" width="100%">
 		<footer>
+			<center>
 			<table>
 				<tr>
-					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-					<td>CONTACTO<ul></ul><b>GANADERIA LECHIIII, S.A.,</b><ul></ul>San Pancho de Asis<ul></ul>66366 Villanueva del Pardo<ul></ul>Mexico. Nuevo Leon<ul></ul>Ph. +52 8118 9988 17<ul></ul>Email. mauricioaxelra@gmail.com</td>
-
-					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-							
-					<td>ULTIMAS PUBLICACIONES<ul></ul><ul></ul><ul></ul><b>Gelatina de leche con higos</b><ul></ul>28 septiembre, 2018<ul></ul><b>Polos cremosos de chocolate</b><ul></ul>23 julio, 2018<ul></ul><b>Pastel de leche arrugado o “Galatopita”</b><ul></ul>20 junio, 2018
-					</td>
-
-					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-					<!--https://www.instagram.com/axelrdz01/ -->
-					<td><a href="https://www.instagram.com/axelrdz01/">INSTAGRAM</a><ul></ul><img src="logo\Insta.png" width="350"></td>
-
-					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-
-					<!--https://www.facebook.com/MauricioRodri100 -->	
-					<td><a href="https://www.facebook.com/MauricioRodri100">FACEBOOK</a><ul></ul><img src="logo\Face.png" width="600"></td>
+					<td ><a href="https://www.instagram.com/axelrdz01/"><center>INSTAGRAM</center><ul></ul><img src="logo\Insta.png" width="350"></a></td>
+					<td><a href="https://www.facebook.com/MauricioRodri100"><center>FACEBOOK</center><ul></ul><img src="logo\Face.png" width="600"></a></td>
 				</tr>
 			</table>
 		</footer>
 		<table>
+		</table>
 			<tr><ul></ul></tr>
 			<tr><td><ul></ul></td></tr>
 		</table>
